@@ -1,0 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('./images/bastao.png');
+    background-size: 10%;
+    background-position: calc(100% + 2.6vw) calc(90% + 8.8vh);
+    background-repeat: no-repeat;
+}

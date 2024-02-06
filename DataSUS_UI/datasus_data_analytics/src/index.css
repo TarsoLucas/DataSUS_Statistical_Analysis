@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.transition-slide {
+    transition-property: width, opacity, padding;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+  }
+  
+  /* Define the classes for different states */
+  .expanded {
+    width: 100%;
+    opacity: 1;
+    padding-left: 1rem;
+  }
+  
+  .collapsed {
+    width: 0;
+    opacity: 0;
+    padding-left: 0;
+  }
