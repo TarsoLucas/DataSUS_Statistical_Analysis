@@ -70,8 +70,3 @@ for element in elements:
     
 
 driver.close()
-
-
-
-
-
