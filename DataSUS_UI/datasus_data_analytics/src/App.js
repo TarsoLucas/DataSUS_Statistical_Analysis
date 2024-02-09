@@ -46,7 +46,6 @@ export default function App() {
   });
 
   const handleItemClick = () => {
-    // Change the sidebar item when clicked
     if (currentItem.text === "Epidemiológicas e Morbidade") {
       setCurrentItem({
         icon1: <ChevronLeft />,
