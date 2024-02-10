@@ -9,10 +9,10 @@ export default function Sidebar({ children }) {
     const [activeItem, setActiveItem] = useState(null);
 
     return(
-        <aside className="h-svh flex flex-col">
-            <nav className="h-screen flex-grow flex flex-col bg-white border-r shadow-sm">
-                <SidebarContext.Provider value={{ expanded }}>
-                    <ul className="flex-1 px-3 max-w-72 overflow-y-auto">{React.Children.map(children, (child, index) =>
+        <aside className="h-screen">
+            <nav className="h-full max-h-dvh flex-grow flex flex-col bg-white border-r shadow-sm z-10">
+                <SidebarContext.Provider value={{ expanded }}> 
+                    <ul className="flex-1 px-3">{React.Children.map(children, (child, index) =>
                             React.cloneElement(child, {
                                 isActive: activeItem === index,
                                 setActiveItem: () => setActiveItem(index),
@@ -32,30 +32,27 @@ export default function Sidebar({ children }) {
     )
 };
 
-export function SidebarItem({ icon1, icon2, text, alert, isActive, children, setActiveItem, onClick}) {
+export function SidebarItem({ icon, text, alert, isActive, children, setActiveItem, onClick }) {
     const {expanded} = useContext(SidebarContext)
     const [active, setActive] = useState(false)
-    // const [activeItem, setActiveItem] = useState(null);
     const [clicked, setClicked] = useState(true)
     const activeItem = (true)
 
     return (
         
-        <div className="flex flex-col max-w-72 relative">{/*onClick={() => {handleClick(); setClicked(curr => !curr)}} */}
+        <div className="flex flex-col relative" style={{maxHeight: "93vh"}}>
              <li onClick={onClick}
                  className={`
-                    relative flex items-center py-2 px-3 my-1
+                    relative flex items-center py-2 pl-2 my-1
                     font-medium rounded-md cursor-pointer
                     transition-colors group
-                    hover:bg-green-50 text-gray-600 transition-all
-                    sticky
+                    hover:bg-green-100 text-gray-600 transition-all
                  `}
             >
-                {icon1}
-                {icon2}
+                {icon}
                 <span
                     className={`overflow-hidden transition-all ${
-                        expanded ? "w-52 ml-3" : "w-0"
+                        expanded ? "w-32 ml-3" : "w-0"
                     }`}
                 >
                     {text}
@@ -77,14 +74,16 @@ export function SidebarItem({ icon1, icon2, text, alert, isActive, children, set
                 )}
             </li>
             <SidebarItemContext.Provider value={{ clicked }}>
-                <ul className="flex-1 flex-col px-3">{React.Children.map(children, (child, index) =>
+                <ul className="flex-1 flex-col px-3 overflow-auto overflow-x-hidden scrollbar-thin scrollbar-webkit">
+                    {React.Children.map(children, (child, index) =>
                         React.cloneElement(child, {
-                            isActive: activeItem === index,
-                            setActiveItem: () => setActiveItem(index),
+                        isActive: activeItem === index,
+                        setActiveItem: () => setActiveItem(index),
                         })
                     )}
                 </ul>
             </SidebarItemContext.Provider>
+
         </div>
         
     )

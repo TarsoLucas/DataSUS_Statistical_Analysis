@@ -1,111 +1,147 @@
 import Sidebar, { SidebarItem, SidebarSubItem } from './components/sidebar';
 import {
   LandPlot,
-  ActivitySquare
+  ActivitySquare,
+  AreaChart,
+  Handshake,
+  Share2,
+  BarChart2,
+  MapPinned,
+  NotepadText,
+  Landmark,
+  Cross
 } from "lucide-react"
 import { ChevronLeft } from "lucide-react"
 import './App.css';
 import Header from './components/header';
 import { useState } from "react";
-
-const states = [
-  {key: "ac", name: "Acre"},
-  {key: "al", name: "Alagoas"},
-  {key: "ap", name: "Amapá"},
-  {key: "am", name: "Amazonas"},
-  {key: "ba", name: "Bahia"},
-  {key: "ce", name: "Ceará"},
-  {key: "df", name: "Distrito Federal"},
-  {key: "es", name: "Espírito Santo"},
-  {key: "go", name: "Goiás"},
-  {key: "ma", name: "Maranhão"},
-  {key: "mt", name: "Mato Grosso"},
-  {key: "ms", name: "Mato Grosso do Sul"},
-  {key: "mg", name: "Minas Gerais"},
-  {key: "pa", name: "Pará"},
-  {key: "pb", name: "Paraíba"},
-  {key: "pr", name: "Paraná"},
-  {key: "pe", name: "Pernambuco"},
-  {key: "pi", name: "Piauí"},
-  {key: "rj", name: "Rio de Janeiro"},
-  {key: "rn", name: "Rio Grande do Norte"},
-  {key: "rs", name: "Rio Grande do Sul"},
-  {key: "ro", name: "Rondônia"},
-  {key: "rr", name: "Roraima"},
-  {key: "sc", name: "Santa Catarina"},
-  {key: "sp", name: "São Paulo"},
-  {key: "se", name: "Sergipe"},
-  {key: "to", name: "Tocantins"}
-  
-];
+import AidsDataRequest from './components/dataRequest';
+const { 
+  morbities, 
+  states, 
+  indicators, 
+  healthAssist, 
+  assistNet, 
+  vitalStats, 
+  demographic, 
+  researches, 
+  financial 
+} = require('./assets/optionsArrays')
 
 export default function App() {
-  const [currentItem, setCurrentItem] = useState({
-    icon1: <ActivitySquare size={20} />,
-    text: "Epidemiológicas e Morbidade"
-  });
+  const [subItem, setSubItem] = useState({})
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showSubItems, setShowSubItems] = useState(true);
+  const [selectedSection, setSelectedSection] = useState(true);
 
-  const handleItemClick = () => {
-    // Change the sidebar item when clicked
-    if (currentItem.text === "Epidemiológicas e Morbidade") {
-      setCurrentItem({
-        icon1: <ChevronLeft />,
-        icon2: <LandPlot size={20} />,
-        text: "Estado"
-      });
-    } else {
-      setCurrentItem({
-        icon1: <ActivitySquare size={20} />,
-        text: "Epidemiológicas e Morbidade"
-      });
-    }
+  const handleItemClick = (section) => {
+    setSelectedItem(section)
+    setShowSubItems(showSubItems);
   };
 
+  const sectionToArray = {
+    "Indicadores de Saúde e Pactuações": indicators,
+    "Epidemiológicas e Morbidade": morbities,
+    "Assistência à Saúde": healthAssist,
+    "Rede Assistencial": assistNet,
+    "Estatísticas Vitais": vitalStats,
+    "Demográficas e Socioeconômicas": demographic,
+    "Inquéritos e Pesquisas": researches,
+    "Informações Financeiras": financial
+  };
 
+  const renderSidebarItems = () => {
+    if (selectedItem) {
+      return (
+        <SidebarItem
+          icon={<ChevronLeft size={20} />}
+          text="Voltar"
+          onClick={() => setSelectedItem(null)}
+        >
+          {showSubItems ? (
+            selectedSection ? (
+              sectionToArray[selectedItem].map((item) => (
+                <SidebarSubItem
+                  icon={<Cross size={10} />}
+                  key={item.key}
+                  text={item.value}
+                />
+              ))
+            ) : (null)
+          ) : (
+            null
+          )}
+        </SidebarItem>
+      );
+    }
+
+    return (
+      <>
+        <SidebarItem
+          icon={<AreaChart size={20} />}
+          text="Indicadores de Saúde e Pactuações"
+          onClick={() => handleItemClick("Indicadores de Saúde e Pactuações")}
+        ></SidebarItem>
+        <SidebarItem
+          icon={<Handshake size={20} />}
+          text="Assistência à Saúde"
+          onClick={() => handleItemClick("Assistência à Saúde")}
+        ></SidebarItem>
+        <SidebarItem 
+          icon={<ActivitySquare size={20} />} 
+          text="Epidemiológicas e Morbidade"
+          onClick={() => handleItemClick("Epidemiológicas e Morbidade")}
+        >
+        </SidebarItem>
+        <SidebarItem 
+          icon={<Share2 size={20} />} 
+          text="Rede Assistencial"
+          onClick={() => handleItemClick("Rede Assistencial")}
+        ></SidebarItem>
+        <SidebarItem 
+          icon={<BarChart2 size={20} />} 
+          text="Estatísticas Vitais"
+          onClick={() => handleItemClick("Estatísticas Vitais")}
+        ></SidebarItem>
+        <SidebarItem
+          icon={<MapPinned size={20} />}
+          text="Demográficas e Socioeconômicas"
+          onClick={() => handleItemClick("Demográficas e Socioeconômicas")}
+        ></SidebarItem>
+        <SidebarItem
+          icon={<NotepadText size={20} />}
+          text="Inquéritos e Pesquisas"
+          onClick={() => handleItemClick("Inquéritos e Pesquisas")}
+        ></SidebarItem>
+        <SidebarItem 
+          icon={<Landmark size={20} />}
+          text="Informações Financeiras"
+          onClick={() => handleItemClick("Informações Financeiras")}
+        ></SidebarItem>
+      </>
+    );
+  };
 
   return (
-    <body className="App h-screen">
-      <Header />
-      <div className="flex flex-row flex-1">
-        <Sidebar className="flex flex-row flex-1">
-          <SidebarItem 
-            icon1={currentItem.icon1}
-            icon2={currentItem.icon2}
-            text={currentItem.text} 
-            onClick={handleItemClick}
-          >
-            {states.map((state) => (
-                <SidebarSubItem 
-                  key={state.key}
-                  text={state.name}
-                />
-            ))}
-          </SidebarItem>
-        </Sidebar>
-        <div className="w-scren">datagoeshereaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+    <div className="overflow-hidden bg-gray-800">
+      <div className="h-screen flex flex-row scrollbar-thin scrollbar-webkit overflow-auto">
+      <Sidebar>
+    {/* <SidebarItem icon={<AreaChart size={20} />} text="Indicadores de Saúde e Pactuações"></SidebarItem>
+        <SidebarItem icon={<Handshake size={20} />} text="Assistência à Saúde"></SidebarItem>
+        <SidebarItem icon={<ActivitySquare size={20} />} text="Epidemiológicas e Morbidade"></SidebarItem>
+        <SidebarItem icon={<Share2 size={20} />} text="Rede Assistencial"></SidebarItem>
+        <SidebarItem icon={<BarChart2 size={20} />} text="Estatísticas Vitais"></SidebarItem>
+        <SidebarItem icon={<MapPinned size={20} />} text="Demográficas e Socioeconômicas"></SidebarItem>
+        <SidebarItem icon={<NotepadText size={20} />} text="Inquéritos e Pesquisas"></SidebarItem>
+        <SidebarItem icon={<Landmark size={20} />} text="Informações Financeiras"></SidebarItem> */}
+        {renderSidebarItems()}
+      </Sidebar>
+      
+      <div className="flex flex-col w-full">
+        <Header />
+        <AidsDataRequest />
       </div>
-    </body>
+      </div>
+    </div>
   );
 }
-
-// function App() {
-//   return (
-//     <body className="App h-screen">
-//       <Header />
-//       <div className='flex flex-row'>
-//         <Sidebar>
-//           <SidebarItem 
-//             icon={<ActivitySquare size={20} />} text="Epidemiológicas e Morbidade" 
-//           >
-//             {/* <SidebarSubItem 
-//               icon={<LandPlot size={20} />} text="Estado"
-//             >
-//             </SidebarSubItem> */}
-//           </SidebarItem>
-//         </Sidebar>
-//       </div>
-//     </body>
-//   );
-// }
-
-// export default App;

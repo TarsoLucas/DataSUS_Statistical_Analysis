@@ -1,0 +1,48 @@
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (dsda_backend)
+version: (1.0.0)
+description: datasus data analysis backend
+entry point: (index.js)
+test command: backend-test
+git repository: https://github.com/TarsoLucas/DataSUS_Statistical_Analysis_Backend
+keywords: statistics data analysis datasus
+author: Tarso Lucas Sarmento de Oliveira
+license: (ISC) MIT
+About to write to C:\Users\tarso\Documents\DataSUS_Statistical_Analysis\DataSUS_UI\dsda_backend\package.json:
+
+{
+  "name": "dsda_backend",
+  "version": "1.0.0",
+  "description": "datasus data analysis backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "backend-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TarsoLucas/DataSUS_Statistical_Analysis_Backend.git"
+  },
+  "keywords": [
+    "statistics",
+    "data",
+    "analysis",
+    "datasus"
+  ],
+  "author": "Tarso Lucas Sarmento de Oliveira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TarsoLucas/DataSUS_Statistical_Analysis_Backend/issues"
+  },
+  "homepage": "https://github.com/TarsoLucas/DataSUS_Statistical_Analysis_Backend#readme"
+}
+
+
+Is this OK? (yes) yes

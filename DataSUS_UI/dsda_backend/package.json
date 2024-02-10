@@ -1,0 +1,32 @@
+{
+  "name": "dsda_backend",
+  "version": "1.0.0",
+  "description": "datasus data analysis backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "backend-test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TarsoLucas/DataSUS_Statistical_Analysis_Backend.git"
+  },
+  "keywords": [
+    "statistics",
+    "data",
+    "analysis",
+    "datasus"
+  ],
+  "author": "Tarso Lucas Sarmento de Oliveira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TarsoLucas/DataSUS_Statistical_Analysis_Backend/issues"
+  },
+  "homepage": "https://github.com/TarsoLucas/DataSUS_Statistical_Analysis_Backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.7"
+  },
+  "type": "module"
+}

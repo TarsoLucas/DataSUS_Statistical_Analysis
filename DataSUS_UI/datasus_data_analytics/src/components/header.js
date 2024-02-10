@@ -8,10 +8,10 @@ import {
 const Header = () => {
 
     return(
-        <header className="flex pr-2 pl-2 justify-between h-14 w-100 bg-green-100">
+        <header className="flex pr-2 pl-2 justify-between h-14 bg-emerald-200">
             <img
                 src={logo}
-                className="p-1"
+                className="p-1 max-w-40"
                 alt=""
             />
             <div className="border-t flex justify-between p-3 items-center min-w-32">
