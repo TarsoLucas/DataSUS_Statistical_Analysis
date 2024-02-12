@@ -24,11 +24,8 @@ export default function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showSubItems, setShowSubItems] = useState(true);
   const [selectedSection, setSelectedSection] = useState(true);
-  const [request, setRequest] = useState({});
   const [DataRequestSubOptionName, setDataRequestSubOptionName] = useState('')
   const [callDataRequest, setCallDataRequest] = useState(false);
-
-  console.log(callDataRequest)
 
   const HandleItemClick = (section) => {
     setSelectedItem(section)
@@ -128,7 +125,7 @@ export default function App() {
       
       <div className="flex flex-col w-full">
         <Header />
-        <div>
+        <div className={`${callDataRequest ? "opacity-100 transition-opacity duration-200" : "opacity-0"}`}>
           {callDataRequest && 
             <DataRequest DataRequestSubOptionName={DataRequestSubOptionName} />
           }

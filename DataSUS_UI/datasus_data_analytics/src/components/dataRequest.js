@@ -18,8 +18,11 @@ function DataRequest({ DataRequestSubOptionName }) {
   let indexParenthesis = DataRequestSubOptionName.indexOf("(")
   let SlicedName = DataRequestSubOptionName.slice(0, indexParenthesis)
   let queryUrl = SlicedName.toLowerCase().replaceAll(" ","")
+  let removeAccentuation =  queryUrl.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   let backendPath = 'http://localhost:4000/'
-  let backendURL = backendPath.concat(queryUrl)
+  let backendURL = backendPath.concat(removeAccentuation)
+
+  console.log(backendURL)
 
 
   useEffect(() => {
@@ -27,16 +30,15 @@ function DataRequest({ DataRequestSubOptionName }) {
         .then(response => response.json())
         .then(data => {
           setData(data)
-          console.log('request made')
         })
         .catch(error => {
           console.error('Error fetching data:', error);
         })
-  }, [])
+  }, [backendURL])
 
   return(
     <div className="flex flex-col items-center mt-10">
-      <label htmlFor="aidsChart">Casos de AIDS x Anos (1980-2023)</label>
+      <label htmlFor="aidsChart">{DataRequestSubOptionName}</label>
       <LineChartAIDS id="aidsChart" data={data} />
     </div>
   )

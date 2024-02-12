@@ -69,17 +69,17 @@ export function SidebarItem({ icon, text, alert, children, onClick }) {
                     </div>
                 )}
             </li>
-                <ul 
-                    onClick={() => setClicked(curr => !curr)}
-                    className="flex-1 flex-col px-3 overflow-auto overflow-x-hidden scrollbar-thin scrollbar-webkit"
-                >
-                    {React.Children.map(children, (child, index) =>
-                        React.cloneElement(child, {
-                        isClicked: clickedItem === index,
-                        setClickedItem: () => setClickedItem(index),
-                        })
-                    )}
-                </ul>
+            <ul 
+                onClick={() => setClicked(curr => !curr)}
+                className="flex-1 flex-col px-3 overflow-auto overflow-x-hidden scrollbar-thin scrollbar-webkit"
+            >
+                {React.Children.map(children, (child, index) =>
+                    React.cloneElement(child, {
+                    isClicked: clickedItem === index,
+                    setClickedItem: () => setClickedItem(index),
+                    })
+                )}
+            </ul>
         </div>
     )
 };
@@ -94,7 +94,6 @@ export function SidebarSubItem({ icon, text, isClicked, setClickedItem, getSubOp
     };
 
     return (
-        expanded && (
             <li 
                 className={`
                     relative flex items-center py-2 px-2 my-1
@@ -115,18 +114,17 @@ export function SidebarSubItem({ icon, text, isClicked, setClickedItem, getSubOp
                 >
                     {text}
                 </span>
-                {/* {!expanded && (
+                {!expanded && (
                     <div
-                        className="fixed 
-                        bg-green-100 rounded-md px-2 py-1 ml-14
-                        text-gray-600 text-sm max-w-40
+                        className="
+                        absolute left-full rounded-md px-2 py-1 ml-6
+                        bg-green-100 text-gray-600 text-sm
                         invisible opacity-20 -translate-x-3 transition-all
-                        group-hover:visible group-hover:opacity-100 group-hover:translate-x-0" 
+                        group-hover:visible group-hover:opacity-100 group-hover:translate-x-0"
                     >
                         {text}
                     </div>
-                )} */}
+                )}
         </li>
         )
-    )
 };

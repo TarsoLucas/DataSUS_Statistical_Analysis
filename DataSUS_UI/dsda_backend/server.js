@@ -29,7 +29,69 @@ app.get('/casosdeaids', (req, res) => {
   });
 });
 
-// Start the server
+app.get('/casosdetuberculose', (req, res) => {
+  const query = 'SELECT * FROM casos_tuberculose';
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.error('Error executing query:', err.message);
+      res.status(500).json({ error: 'Internal server error' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+app.get('/casosdehanseniase', (req, res) => {
+  const query = 'SELECT * FROM casos_hanseniase';
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.error('Error executing query:', err.message);
+      res.status(500).json({ error: 'Internal server error' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+
+app.get('/notificacoesdecasossuspeitosdesc', (req, res) => {
+  const query = 'SELECT * FROM casos_scz';
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.error('Error executing query:', err.message);
+      res.status(500).json({ error: 'Internal server error' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+
+app.get('/programadecontroledaesquistossomose', (req, res) => {
+  const query = 'SELECT * FROM casos_esquistossomose';
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.error('Error executing query:', err.message);
+      res.status(500).json({ error: 'Internal server error' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+
+app.get('/tempoateoiniciodotratamentooncologic', (req, res) => {
+  const query = 'SELECT * FROM tempo_ate_inicio_tratamento_oncologico';
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.error('Error executing query:', err.message);
+      res.status(500).json({ error: 'Internal server error' });
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server is listening at http://localhost:${port}`);
 });
