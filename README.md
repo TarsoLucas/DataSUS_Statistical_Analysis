@@ -1,4 +1,4 @@
-# *Em Desenvolvimento - 09/02/24 - CUIDADO*
+# *Em Desenvolvimento - 12/02/24 - CUIDADO*
 > *Currently in development - 02/09/24 - CAUTION*
 
 ## NÃO UTILIZE O WEB SCRAPING DE MANEIRA IRRESPONSÁVEL. Pode provocar sobrecargas e falhas no sistema TabNet.
