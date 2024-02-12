@@ -2,22 +2,19 @@ import { ChevronFirst, ChevronLast } from "lucide-react"
 import React, { createContext, useContext, useState } from "react"
 
 const SidebarContext = createContext()
-const SidebarItemContext = createContext()
 
 export default function Sidebar({ children }) {
     const [expanded, setExpanded] = useState(true)
-    const [activeItem, setActiveItem] = useState(null);
 
     return(
         <aside className="h-screen">
-            <nav className="h-full max-h-dvh flex-grow flex flex-col bg-white border-r shadow-sm z-10">
+            <nav className="h-full max-h-dvh flex-grow flex flex-col bg-white border-r shadow-sm">
                 <SidebarContext.Provider value={{ expanded }}> 
-                    <ul className="flex-1 px-3">{React.Children.map(children, (child, index) =>
-                            React.cloneElement(child, {
-                                isActive: activeItem === index,
-                                setActiveItem: () => setActiveItem(index),
-                            })
-                        )}</ul>
+                    <ul className="flex-1 px-3">
+                        {React.Children.map(children, (child, index) =>
+                            React.cloneElement(child)
+                        )}
+                    </ul>
                 </SidebarContext.Provider>
                 <div className="p-4 pb-2 flex items-center">
                     <button
@@ -32,21 +29,20 @@ export default function Sidebar({ children }) {
     )
 };
 
-export function SidebarItem({ icon, text, alert, isActive, children, setActiveItem, onClick }) {
+export function SidebarItem({ icon, text, alert, children, onClick }) {
     const {expanded} = useContext(SidebarContext)
-    const [active, setActive] = useState(false)
     const [clicked, setClicked] = useState(true)
-    const activeItem = (true)
+    const [clickedItem, setClickedItem] = useState(null)
 
     return (
         
         <div className="flex flex-col relative" style={{maxHeight: "93vh"}}>
-             <li onClick={onClick}
+            <li onClick={onClick}
                  className={`
                     relative flex items-center py-2 pl-2 my-1
                     font-medium rounded-md cursor-pointer
                     transition-colors group
-                    hover:bg-green-100 text-gray-600 transition-all
+                    hover:bg-green-100 text-gray-600 transition-all max-h-24
                  `}
             >
                 {icon}
@@ -73,56 +69,64 @@ export function SidebarItem({ icon, text, alert, isActive, children, setActiveIt
                     </div>
                 )}
             </li>
-            <SidebarItemContext.Provider value={{ clicked }}>
-                <ul className="flex-1 flex-col px-3 overflow-auto overflow-x-hidden scrollbar-thin scrollbar-webkit">
+                <ul 
+                    onClick={() => setClicked(curr => !curr)}
+                    className="flex-1 flex-col px-3 overflow-auto overflow-x-hidden scrollbar-thin scrollbar-webkit"
+                >
                     {React.Children.map(children, (child, index) =>
                         React.cloneElement(child, {
-                        isActive: activeItem === index,
-                        setActiveItem: () => setActiveItem(index),
+                        isClicked: clickedItem === index,
+                        setClickedItem: () => setClickedItem(index),
                         })
                     )}
                 </ul>
-            </SidebarItemContext.Provider>
-
         </div>
-        
     )
 };
 
-export function SidebarSubItem({ icon, text, isActive, setActiveItem }) {
+export function SidebarSubItem({ icon, text, isClicked, setClickedItem, getSubOptionName, callDataRequest }) {
     const {expanded} = useContext(SidebarContext)
-    const {clicked} = useContext(SidebarItemContext)
-    const [active, setActive] = useState(false)
 
     const handleClick = () => {
-        setActiveItem();
-        setActive(curr => !curr)
+        setClickedItem(curr => !curr)
+        getSubOptionName(text)
+        callDataRequest(true);
     };
 
-
     return (
-        <li onClick={handleClick}
-            className={`
-                relative flex items-center py-2 px-3 my-1
-                font-medium rounded-md cursor-pointer
-                transition-colors group
-                ${
-                    expanded
-                        ? "w-64"
-                        : "w-0 h-0"
-                }
-            `}
-        >
-            {icon}
-            <span
-                className={`overflow-hidden transition-all 
-                ${
-                    expanded ? "w-52 ml-3" : "w-0"
-                }`}
+        expanded && (
+            <li 
+                className={`
+                    relative flex items-center py-2 px-2 my-1
+                    font-medium rounded-md cursor-pointer
+                    transition-colors text-gray-600 transition-all max-h-24
+                    ${
+                        isClicked ? "bg-green-300" : "hover:bg-green-100"
+                    }
+                `}
+                onClick={handleClick}
             >
-                {text}
-            </span>
-
+                {icon}
+                <span
+                    className={`overflow-hidden transition-all 
+                    ${
+                        expanded ? "w-52 ml-3" : "w-0"
+                    }`}
+                >
+                    {text}
+                </span>
+                {/* {!expanded && (
+                    <div
+                        className="fixed 
+                        bg-green-100 rounded-md px-2 py-1 ml-14
+                        text-gray-600 text-sm max-w-40
+                        invisible opacity-20 -translate-x-3 transition-all
+                        group-hover:visible group-hover:opacity-100 group-hover:translate-x-0" 
+                    >
+                        {text}
+                    </div>
+                )} */}
         </li>
+        )
     )
 };

@@ -17,7 +17,7 @@ const db = new sql.Database('../../DataSUS_Project_Scraping/Epidemiologicas_e_Mo
 
 app.use(express.json());
 
-app.get('/data', (req, res) => {
+app.get('/casosdeaids', (req, res) => {
   const query = 'SELECT * FROM casos_AIDS';
   db.all(query, (err, rows) => {
     if (err) {

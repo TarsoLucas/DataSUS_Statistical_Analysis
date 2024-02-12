@@ -1,14 +1,33 @@
 import { useState, useEffect } from 'react'
 import LineChartAIDS from './lineGraph'
+import { 
+  morbities, 
+  states, 
+  indicators, 
+  healthAssist, 
+  assistNet, 
+  vitalStats, 
+  demographic, 
+  researches, 
+  financial 
+} from'../assets/optionsArrays'
 
-const AidsDataRequest = () => {
+function DataRequest({ DataRequestSubOptionName }) {
   const  [data, setData] = useState([])
 
+  let indexParenthesis = DataRequestSubOptionName.indexOf("(")
+  let SlicedName = DataRequestSubOptionName.slice(0, indexParenthesis)
+  let queryUrl = SlicedName.toLowerCase().replaceAll(" ","")
+  let backendPath = 'http://localhost:4000/'
+  let backendURL = backendPath.concat(queryUrl)
+
+
   useEffect(() => {
-      fetch('http://localhost:4000/data')
+      fetch(backendURL)
         .then(response => response.json())
         .then(data => {
           setData(data)
+          console.log('request made')
         })
         .catch(error => {
           console.error('Error fetching data:', error);
@@ -24,4 +43,4 @@ const AidsDataRequest = () => {
 
 }
 
-export default AidsDataRequest
+export default DataRequest
