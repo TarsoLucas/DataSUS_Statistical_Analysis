@@ -8,7 +8,10 @@ export default function Sidebar({ children }) {
 
     return(
         <aside className="h-screen">
-            <nav className="h-full max-h-dvh min-w-52 flex-grow flex flex-col bg-white border-r shadow-sm">
+            <nav className={
+                `h-full max-h-dvh flex-grow flex flex-col bg-white border-r shadow-sm
+                ${expanded ? "min-w-52" : ""}
+                `}>
                 <SidebarContext.Provider value={{ expanded }}> 
                     <ul className="flex-1 px-3">
                         {React.Children.map(children, (child, index) =>
