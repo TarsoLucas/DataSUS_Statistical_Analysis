@@ -13,11 +13,12 @@
 #Prints do sistema atualmente
 ## Barra lateral com categorias e Cabeçalho com autenticação, configurações e ajuda.
 > Sidebar with categories and Header including authentication, settings and help.
-![Captura de tela 2024-02-12 185210](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/fd4372b7-1665-429e-a609-e6c6eede0f38)
+![Captura de tela 2024-02-12 184628](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/23dbf899-134a-4194-a278-a521d79855fe)
 ![Captura de tela 2024-02-12 185011](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/142d6796-44ea-43da-9194-1d3801be2909)
 ## Funcionalidade de retração de barra lateral com efeito de texto flutuante.
 > Retracting sidebar with floating text effect.
 ![Captura de tela 2024-02-09 221952](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/0e1094f4-9d88-4911-8611-44fa940b025b)
+![Captura de tela 2024-02-12 185210](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/fd4372b7-1665-429e-a609-e6c6eede0f38)
 ## Renderização de gráficos dos dados coletados.
 > Rendering data in charts.
 ![Captura de tela 2024-02-09 221933](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/2231405f-091a-4592-bf7d-be9cb5d1d217)
@@ -29,4 +30,4 @@
 ![Captura de tela 2024-02-12 184709](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/2cddd6b6-e830-4dd9-b4da-c59f6025b65b)
 ![Captura de tela 2024-02-12 184702](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/d3f1b9ba-ed6f-4382-b69c-c9f3dd9a6192)
 ![Captura de tela 2024-02-12 184657](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/b9809b6f-1f03-4acd-95d2-a3bb1dc64aea)
-![Captura de tela 2024-02-12 184628](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/23dbf899-134a-4194-a278-a521d79855fe)
+
