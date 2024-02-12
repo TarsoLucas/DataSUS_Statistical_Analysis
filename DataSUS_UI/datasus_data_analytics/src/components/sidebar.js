@@ -8,7 +8,7 @@ export default function Sidebar({ children }) {
 
     return(
         <aside className="h-screen">
-            <nav className="h-full max-h-dvh flex-grow flex flex-col bg-white border-r shadow-sm">
+            <nav className="h-full max-h-dvh min-w-52 flex-grow flex flex-col bg-white border-r shadow-sm">
                 <SidebarContext.Provider value={{ expanded }}> 
                     <ul className="flex-1 px-3">
                         {React.Children.map(children, (child, index) =>
@@ -54,7 +54,7 @@ export function SidebarItem({ icon, text, alert, children, onClick }) {
                     {text}
                 </span>
                 {alert && (
-                    <div className={`absolute right-2 w-2 h-2 rounded bg-green-400 ${expanded ? "":"top-2"}`} />
+                    <div className={`absolute right-2 w-2 h-2 rounded bg-red-400 ${expanded ? "":"top-2"}`} />
                 )}
                 {!expanded && (
                     <div
@@ -84,7 +84,7 @@ export function SidebarItem({ icon, text, alert, children, onClick }) {
     )
 };
 
-export function SidebarSubItem({ icon, text, isClicked, setClickedItem, getSubOptionName, callDataRequest }) {
+export function SidebarSubItem({ icon, text, isClicked, setClickedItem, getSubOptionName, callDataRequest, alert }) {
     const {expanded} = useContext(SidebarContext)
 
     const handleClick = () => {
@@ -114,6 +114,9 @@ export function SidebarSubItem({ icon, text, isClicked, setClickedItem, getSubOp
                 >
                     {text}
                 </span>
+                {alert && (
+                <div className={`absolute right-2 w-2 h-2 rounded bg-red-400 ${expanded ? "":"top-2"}`} />
+                )}
                 {!expanded && (
                     <div
                         className="
