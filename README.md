@@ -22,7 +22,6 @@
 ## Renderização de gráficos dos dados coletados.
 > Rendering data in charts.
 ![Captura de tela 2024-02-12 184657](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/b9809b6f-1f03-4acd-95d2-a3bb1dc64aea)
-![Captura de tela 2024-02-09 221933](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/2231405f-091a-4592-bf7d-be9cb5d1d217)
 ![Captura de tela 2024-02-12 185225](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/401907f7-6c22-4cf2-81c0-245355079c2a)
 ![Captura de tela 2024-02-12 184729](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/f2b929f3-f120-47ec-addb-aeeffa1682f9)
 ![Captura de tela 2024-02-12 184720](https://github.com/TarsoLucas/DataSUS_Statistical_Analysis/assets/95001225/d2d8cdba-4f13-4812-8b86-eb891ab61c8e)
