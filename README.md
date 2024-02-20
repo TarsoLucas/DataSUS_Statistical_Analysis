@@ -2,6 +2,9 @@
 > *Currently in development - CAUTION*
 
 ### UPDATES: 19/02/2023 - 
+# Em progresso: Implementação de TypeScript
+> In progress: TypeScript implementation
+
 # Setup inicial do CI/CD (conectado ao GCP)
 > Inicial CI/CD setup (connected to GCP) 
 
