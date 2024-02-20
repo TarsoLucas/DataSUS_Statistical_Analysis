@@ -3,7 +3,7 @@
 
 ### UPDATES: 19/02/2023 - 
 # Setup inicial do CI/CD (conectado ao GCP)
-> Inicial CI/CD setup (connectec to GCP) 
+> Inicial CI/CD setup (connected to GCP) 
 
 ## NÃO UTILIZE O WEB SCRAPING DE MANEIRA IRRESPONSÁVEL. Pode provocar sobrecargas e falhas no sistema TabNet.
 > DO NOT USE THE WEB SCRAPING IRRESPONSIBLY. For it can overload the TabNet system.
