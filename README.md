@@ -1,9 +1,9 @@
 # *Em Desenvolvimento - CUIDADO*
 > ## *Currently in development - CAUTION*
 
-# UPDATES: 19/02/2023 - 
-### Em progresso: Implementação de TypeScript
-> ### In progress: TypeScript implementation
+# UPDATES: 21/02/2023 - 
+### Em progresso: node para .env e testes (BE, FE e scraping)
+> ### In progress: node to .env and testing (BE, FE e scraping)
 
 # Setup inicial do CI/CD (conectado ao GCP)
 > ## Inicial CI/CD setup (connected to GCP) 
