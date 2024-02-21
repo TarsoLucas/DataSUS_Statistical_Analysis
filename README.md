@@ -17,6 +17,16 @@
 ### Haverá muitos updates mais, incluindo mais dados, análises e funcionalidades. Não disponibilizarei os outros códigos que foram utilizados para coletar dados afim de poupar o sistema DataSUS.
 > There will be many more updates, including more data, analysis and funtionalities. I won't make available the other scripts that were used to gather the data so as to save the DataSUS's web system from any issues.
 
+### Para Utilização em dev:
+# clone este repositório
+# npm install
+# npm start
+
+> ### For Development testing:
+> # clone this repository
+> # npm install
+> # npm start
+
 #Prints do sistema atualmente
 ## Barra lateral com categorias e Cabeçalho com autenticação, configurações e ajuda.
 > Sidebar with categories and Header including authentication, settings and help.
