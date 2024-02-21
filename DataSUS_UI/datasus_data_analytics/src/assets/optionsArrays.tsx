@@ -112,7 +112,17 @@ export const financial = [
   {key: "3", value: "Guia de autorização de pagamento"},
 ]
 
-export const sectionToArray = {
+
+type Item = {
+  key: string;
+  value: string;
+};
+
+type SectionToArray = {
+  [sectionName: string]: Item[];
+};
+
+export const sectionToArray: SectionToArray = {
   "Indicadores de Saúde e Pactuações": indicators,
   "Epidemiológicas e Morbidade": morbities,
   "Assistência à Saúde": healthAssist,

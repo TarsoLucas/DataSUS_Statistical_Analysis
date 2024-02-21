@@ -12,8 +12,8 @@ import {
   financial 
 } from'../assets/optionsArrays'
 
-function DataRequest({ DataRequestSubOptionName }) {
-  const  [data, setData] = useState([])
+function DataRequest({ DataRequestSubOptionName }: {DataRequestSubOptionName: string}) {
+  const  [data, setData] = useState<any[]>([])
 
   let indexParenthesis = DataRequestSubOptionName.indexOf("(")
   let SlicedName = DataRequestSubOptionName.slice(0, indexParenthesis)

@@ -21,23 +21,28 @@ import {
 import DataRequest from './components/dataRequest';
 
 export default function App() {
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [showSubItems, setShowSubItems] = useState(true);
-  const [selectedSection, setSelectedSection] = useState(true);
-  const [DataRequestSubOptionName, setDataRequestSubOptionName] = useState('')
-  const [callDataRequest, setCallDataRequest] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [showSubItems, setShowSubItems] = useState<boolean>(true);
+  const [selectedSection, setSelectedSection] = useState<boolean>(true);
+  const [DataRequestSubOptionName, setDataRequestSubOptionName] = useState<string>('')
+  const [callDataRequest, setCallDataRequest] = useState<boolean>(false);
 
-  const HandleItemClick = (section) => {
+  const HandleItemClick = (section: string) => {
     setSelectedItem(section)
     setShowSubItems(showSubItems);
   };
 
-  function GetDataRequestSubOptionName(subOptionName) {
+  function GetDataRequestSubOptionName(subOptionName: string) {
     setDataRequestSubOptionName(subOptionName)
   }
 
-  function GetCallDataRequest(call) {
+  function GetCallDataRequest(call: boolean) {
     setCallDataRequest(call)
+  }
+
+  interface Item {
+    key: any
+    value: any
   }
 
   const renderSidebarItems = () => {
@@ -53,11 +58,13 @@ export default function App() {
         >
           {showSubItems ? (
             selectedSection ? (
-              sectionToArray[selectedItem].map((item) => (
+              sectionToArray[selectedItem].map((item: Item) => (
                 <SidebarSubItem
                   icon={<Cross size={10} />}
                   key={item.key}
                   text={item.value}
+                  isClicked={true}
+                  setClickedItem={() => {}}
                   getSubOptionName={GetDataRequestSubOptionName}
                   callDataRequest={GetCallDataRequest}
                 />
@@ -162,7 +169,7 @@ export default function App() {
                 Com o auxílio de pesquisadores da área de saúde também podem ser realizados estudos mais avançados, desde que considerada a plausibilidade de diversos fatores, utilizando modelagem mateática avançada.
               </p>
               <div style={{marginTop:"30px"}}>
-              <span class="loader" style={{marginLeft:"430px"}}></span>
+              <span className="loader" style={{marginLeft:"430px"}}></span>
               <p style={{marginLeft:"390px", opacity:"0.6"}}>Em construção...</p>
               </div>
 

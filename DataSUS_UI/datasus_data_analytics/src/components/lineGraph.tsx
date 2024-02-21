@@ -1,7 +1,17 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-const LineChartAIDS = ({ data }) => {
+interface DataItem {
+    ano: string
+    cases: number
+}
+
+interface ChartProps {
+    id: string
+    data: DataItem[]
+}
+
+const LineChartAIDS: React.FC<ChartProps> = ({ data }) => {
 
     return (
         <LineChart

@@ -6,9 +6,9 @@ import {
     Moon
   } from "lucide-react"
 
-const Header = () => {
+const Header: React.FC = () => {
 
-    let dark = false;
+    let dark: boolean = false;
 
     return(
         <header className="flex pr-2 pl-2 justify-between h-14 bg-emerald-200">

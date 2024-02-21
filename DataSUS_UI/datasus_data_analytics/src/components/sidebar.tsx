@@ -1,10 +1,16 @@
 import { ChevronFirst, ChevronLast } from "lucide-react"
 import React, { createContext, useContext, useState } from "react"
 
-const SidebarContext = createContext()
 
-export default function Sidebar({ children }) {
-    const [expanded, setExpanded] = useState(true)
+interface SidebarContextProps {
+    expanded: boolean;
+}
+
+const SidebarContext = createContext<SidebarContextProps>({expanded: true,});
+
+export default function Sidebar({ children }: { children: React.ReactNode }
+    ) {
+    const [expanded, setExpanded] = useState<boolean>(true)
 
     return(
         <aside className="h-screen">
@@ -15,7 +21,7 @@ export default function Sidebar({ children }) {
                 <SidebarContext.Provider value={{ expanded }}> 
                     <ul className="flex-1 px-3">
                         {React.Children.map(children, (child, index) =>
-                            React.cloneElement(child)
+                            React.cloneElement(child as React.ReactElement)
                         )}
                     </ul>
                 </SidebarContext.Provider>
@@ -32,10 +38,10 @@ export default function Sidebar({ children }) {
     )
 };
 
-export function SidebarItem({ icon, text, alert, children, onClick }) {
+export function SidebarItem({ icon, text, alert, children, onClick }: { icon: React.ReactNode, text: string, alert?: boolean, children?: React.ReactNode, onClick: () => void }) {
     const {expanded} = useContext(SidebarContext)
-    const [clicked, setClicked] = useState(true)
-    const [clickedItem, setClickedItem] = useState(null)
+    const [clicked, setClicked] = useState<boolean>(true)
+    const [clickedItem, setClickedItem] = useState<number | null>(null)
 
     return (
         
@@ -77,7 +83,7 @@ export function SidebarItem({ icon, text, alert, children, onClick }) {
                 className="flex-1 flex-col px-3 overflow-auto overflow-x-hidden scrollbar-thin scrollbar-webkit"
             >
                 {React.Children.map(children, (child, index) =>
-                    React.cloneElement(child, {
+                    React.cloneElement(child as React.ReactElement, {
                     isClicked: clickedItem === index,
                     setClickedItem: () => setClickedItem(index),
                     })
@@ -87,11 +93,13 @@ export function SidebarItem({ icon, text, alert, children, onClick }) {
     )
 };
 
-export function SidebarSubItem({ icon, text, isClicked, setClickedItem, getSubOptionName, callDataRequest, alert }) {
+export function SidebarSubItem({ icon, text, isClicked, setClickedItem, getSubOptionName, callDataRequest, alert }: 
+    { icon: React.ReactNode, text: string, isClicked: boolean, setClickedItem: () => void, getSubOptionName: (name: string) => void, callDataRequest: (call: boolean) => void, alert?: boolean }) {
+    
     const {expanded} = useContext(SidebarContext)
 
     const handleClick = () => {
-        setClickedItem(curr => !curr)
+        setClickedItem()
         getSubOptionName(text)
         callDataRequest(true);
     };
