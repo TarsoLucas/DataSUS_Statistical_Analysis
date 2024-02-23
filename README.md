@@ -2,8 +2,10 @@
 > ## *Currently in development - CAUTION*
 
 # UPDATES: 21/02/2023 - 
-### Em progresso: node para .env e testes (BE, FE e scraping)
-> ### In progress: node to .env and testing (BE, FE e scraping)
+### Completo: .env 
+### Em progresso: testes (BE, FE e scraping), typescript no backend
+> ### Completed: .env
+> ### In progress: node to .env and testing (BE, FE e scraping), typescript on backend
 
 # Setup inicial do CI/CD (conectado ao GCP)
 > ## Inicial CI/CD setup (connected to GCP) 
