@@ -13,5 +13,13 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node16"
-  }
+  },
+  
+  "include": [
+    "*.ts"
+  ],
+
+  "exclude": [
+    "node_modules"
+  ]
 }

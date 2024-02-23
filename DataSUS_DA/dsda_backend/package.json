@@ -24,11 +24,14 @@
   },
   "homepage": "https://github.com/TarsoLucas/DataSUS_Statistical_Analysis_Backend#readme",
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.18.2",
     "helmet": "^7.1.0",
+    "knex": "^3.1.0",
     "sqlite3": "^5.1.7"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21"
+  }
 }
