@@ -1,14 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = require("express");
-var sqlite3_1 = require("sqlite3");
-var cors_1 = require("cors");
-var dotenv_1 = require("dotenv");
-var helmet_1 = require("helmet");
-(0, dotenv_1.config)();
-var app = (0, express_1.default)();
-var port = 4000;
-app.use((0, helmet_1.default)());
+import express from 'express'
+import sql from 'sqlite3'
+import cors from 'cors';
+import { config } from 'dotenv'
+import helmet from 'helmet'
+
+config()
+const app = express()
+const port = 4000
+app.use(helmet())
+console.log(process.env.LOCAL_DEV_URL)
+
 var whitelist = [process.env.LOCAL_DEV_URL];
 var corsOptions = {
     origin: function (origin, callback) {
@@ -20,9 +21,9 @@ var corsOptions = {
         }
     }
 };
-app.use((0, cors_1.default)(corsOptions));
+app.use(cors(corsOptions));
 var db_name = process.env.DB_NAME;
-var db = new sqlite3_1.default.Database(db_name, sqlite3_1.default.OPEN_READWRITE, function (err) {
+var db = new sql.default.Database(db_name, sql.default.OPEN_READWRITE, function (err) {
     if (err) {
         console.error('Error opening database:', err.message);
     }
